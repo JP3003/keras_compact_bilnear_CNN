@@ -21,12 +21,10 @@ if __name__=='__main__':
         os.environ['CUDA_VISIBLE_DEVICES'] = ''
 
     # File names
-    train_file_name = 'train_images.txt'
-    val_file_name = 'val_images.txt'
-    train_labels_file = 'train_labels.npy'
-    val_labels_file = 'val_labels.npy'
-
-    base_dir = 'data/CUB_200_2011/images'
+    train_file_name = './train_images.txt'
+    val_file_name = './val_images.txt'
+    
+    base_dir = '../input/fruits/fruits-360/Training'
 
     # Get necessary data from raw csvs
     train_mat = pd.read_csv(train_file_name, sep=' ').as_matrix()
