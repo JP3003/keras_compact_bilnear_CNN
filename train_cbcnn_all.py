@@ -21,22 +21,25 @@ if __name__=='__main__':
         os.environ['CUDA_VISIBLE_DEVICES'] = ''
 
     # File names
-    train_file_name = './train_images.txt'
-    val_file_name = './val_images.txt'
+    train_file_name = './train_images.csv'
+    val_file_name = './val_images.csv'
+    train_labels_file = './train_labels.csv'
+    val_labels_file = './val_labels.csv'
     
-    base_dir = '../input/fruits/fruits-360/Training'
+    train_base_dir = './output/train'
+    val_base_dir = './output/val'
 
     # Get necessary data from raw csvs
-    train_mat = pd.read_csv(train_file_name, sep=' ').as_matrix()
-    train_filenames = train_mat[:, 0]
-    train_labels = train_mat[:, 1]
+    train_mat = pd.read_csv(train_file_name, sep=' ')
+    train_filenames = train_mat
+    train_labels = pd.read_csv(train_lables_file, sep=' ')
 
-    val_mat = pd.read_csv(val_file_name, sep=' ').as_matrix()
-    val_filenames = val_mat[:, 0]
-    val_labels = val_mat[:, 1]
-
-    train_file_paths = [os.path.join(base_dir, train_file) for train_file in train_filenames]
-    val_file_paths = [os.path.join(base_dir, val_file) for val_file in val_filenames]
+    val_mat = pd.read_csv(val_file_name, sep=' ')
+    train_filenames = val_mat
+    train_labels = pd.read_csv(val_lables_file, sep=' ')
+    
+    train_file_paths = train_filenames
+    val_file_paths = val_filenames
 
     # Important constants
     batch_size = 64
@@ -47,8 +50,8 @@ if __name__=='__main__':
     no_classes = 131
     INITIAL_LR = 1e-3
     weight_decay_constant = 5e-4
-    train_count = 4794
-    val_count = 1199
+    train_count = 54110
+    val_count = 13580
     DNN_BEST_MODEL = 'ft_all_layer.hdf5'
     init_weights_path = 'ft_last_layer.hdf5'
     EPOCHS_PATIENCE_BEFORE_STOPPING = 5
@@ -85,6 +88,6 @@ if __name__=='__main__':
                                              verbose=1, min_lr=1e-7)
 
     cbcnn_model.fit_generator(generator=train_generator, steps_per_epoch=train_batches,
-                              epochs=100, verbose=1, validation_data=val_generator,
+                              epochs=50, verbose=1, validation_data=val_generator,
                               validation_steps=val_batches,
                               callbacks=[check_pointer, reduce_lr_on_plateau, early_stopper])
