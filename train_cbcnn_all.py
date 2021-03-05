@@ -44,7 +44,7 @@ if __name__=='__main__':
     resize_width = 256
     cropped_height = 224
     cropped_width = 224
-    no_classes = 200
+    no_classes = 131
     INITIAL_LR = 1e-3
     weight_decay_constant = 5e-4
     train_count = 4794
