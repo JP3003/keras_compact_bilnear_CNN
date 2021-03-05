@@ -2,7 +2,7 @@ import numpy as np
 import tensorflow as tf
 from keras import backend as K
 from keras import Input, Model
-from keras.layers import Conv2D, MaxPooling2D, merge, Lambda, Dense, Reshape
+from keras.layers import Conv2D, MaxPooling2D, Concatenate, Lambda, Dense, Reshape
 from tensorflow.keras import regularizers
 
  
@@ -154,7 +154,7 @@ def vgg_16_cbcnn(input_shape, no_classes, bilinear_output_dim, sum_pool=True, we
 
     output_shape_x = x.get_shape().as_list()[1:]
     output_shape_cb = (output_shape_x[0], output_shape_x[1], bilinear_output_dim,)
-    x = merge(compact_bilinear_arg_list, mode=compact_bilinear, name='compact_bilinear', output_shape=output_shape_cb)
+    x = Concatenate(compact_bilinear_arg_list, mode=compact_bilinear, name='compact_bilinear', output_shape=output_shape_cb)
 
     # If sum_pool=True do a global sum pooling
     if sum_pool:
