@@ -32,7 +32,7 @@ if __name__=='__main__':
     # Get necessary data from raw csvs
     train_mat = pd.read_csv(train_file_name)
     train_filenames = train_mat
-    train_labels = pd.read_csv(train_lables_file)
+    train_labels = pd.read_csv(train_labels_file)
 
     val_mat = pd.read_csv(val_file_name)
     train_filenames = val_mat
