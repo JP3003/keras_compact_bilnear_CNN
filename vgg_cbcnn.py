@@ -2,7 +2,8 @@ import numpy as np
 import tensorflow as tf
 from keras import backend as K
 from keras import Input, Model
-from keras.layers import Conv2D, MaxPooling2D, merge, Lambda, Dense, Reshape, regularizers
+from keras.layers import Conv2D, MaxPooling2D, merge, Lambda, Dense, Reshape
+from tensorflow.keras import regularizers
 
  
 def compact_bilinear(tensors_list):
