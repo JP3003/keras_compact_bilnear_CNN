@@ -30,13 +30,13 @@ if __name__=='__main__':
     val_base_dir = './output/val'
 
     # Get necessary data from raw csvs
-    train_mat = pd.read_csv(train_file_name, sep=' ')
+    train_mat = pd.read_csv(train_file_name)
     train_filenames = train_mat
-    train_labels = pd.read_csv(train_lables_file, sep=' ')
+    train_labels = pd.read_csv(train_lables_file)
 
-    val_mat = pd.read_csv(val_file_name, sep=' ')
+    val_mat = pd.read_csv(val_file_name)
     train_filenames = val_mat
-    train_labels = pd.read_csv(val_lables_file, sep=' ')
+    train_labels = pd.read_csv(val_lables_file)
     
     train_file_paths = train_filenames
     val_file_paths = val_filenames
