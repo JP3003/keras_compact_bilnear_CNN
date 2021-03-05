@@ -36,7 +36,7 @@ if __name__=='__main__':
 
     val_mat = pd.read_csv(val_file_name)
     train_filenames = val_mat
-    train_labels = pd.read_csv(val_lables_file)
+    train_labels = pd.read_csv(val_labels_file)
     
     train_file_paths = train_filenames
     val_file_paths = val_filenames
