@@ -154,7 +154,7 @@ def vgg_16_cbcnn(input_shape, no_classes, bilinear_output_dim, sum_pool=True, we
 
     output_shape_x = x.get_shape().as_list()[1:]
     output_shape_cb = (output_shape_x[0], output_shape_x[1], bilinear_output_dim,)
-    x = merge([x, x], mode=compact_bilinear, name='compact_bilinear', output_shape=output_shape_cb)
+    x =  keras.layers.concatenate(compact_bilinear_arg_list, mode=compact_bilinear, name='compact_bilinear', output_shape=output_shape_cb)
 
     # If sum_pool=True do a global sum pooling
     if sum_pool:
@@ -187,6 +187,6 @@ if __name__=='__main__':
 
     vgg_weights_path = 'vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5'
     model = vgg_16_cbcnn(input_shape, no_classes, bilinear_output_dim=bilinear_output_dim, sum_pool=True,
-                         weights_path=vgg_weights_path)
+                         weights_path= False)
 
     print (model.summary())
