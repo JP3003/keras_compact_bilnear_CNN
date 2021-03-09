@@ -153,8 +153,7 @@ def vgg_16_cbcnn(input_shape, no_classes, bilinear_output_dim, sum_pool=True, we
     compact_bilinear_arg_list = [x, x]
 
     output_shape_x = x.get_shape().as_list()[1:]
-    output_shape_cb = (output_shape_x[0], output_shape_x[1], bilinear_output_dim,)
-    
+    output_shape_cb = (output_shape_x[0], output_shape_x[1], bilinear_output_dim)    
     cbp = compact_bilinear_pooling_layer(x, x, bilinear_output_dim, sum_pool=True)
 
     # If sum_pool=True do a global sum pooling
