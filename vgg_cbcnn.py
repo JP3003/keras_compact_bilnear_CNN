@@ -1,6 +1,6 @@
 import numpy as np
 import tensorflow as tf
-from Keras import backend as K
+from keras import backend as K
 from keras import Input, Model
 from keras.layers import Conv2D, MaxPooling2D, concatenate, Lambda, Dense, Reshape,merge, concatenate
 from tensorflow.keras import regularizers
