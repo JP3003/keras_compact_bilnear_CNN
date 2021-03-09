@@ -68,7 +68,7 @@ if __name__=='__main__':
 
     cbcnn_model = vgg_16_cbcnn(input_shape=(cropped_height, cropped_width, 3), no_classes=no_classes,
                                bilinear_output_dim=8192, sum_pool=True, weight_decay_constant=weight_decay_constant,
-                               multi_label=False, weights_path=None)
+                               multi_label=True, weights_path=None)
 
     with h5py.File(init_weights_path, mode='r') as f:
         topology.load_weights_from_hdf5_group(f['model_weights'], cbcnn_model.layers)
