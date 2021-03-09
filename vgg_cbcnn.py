@@ -4,7 +4,7 @@ from keras import backend as K
 from keras import Input, Model
 from keras.layers import Conv2D, MaxPooling2D, concatenate, Lambda, Dense, Reshape,merge, concatenate
 from tensorflow.keras import regularizers
-
+from compact_bilinear_pooling import compact_bilinear_pooling_layer
  
 def compact_bilinear(tensors_list):
 
